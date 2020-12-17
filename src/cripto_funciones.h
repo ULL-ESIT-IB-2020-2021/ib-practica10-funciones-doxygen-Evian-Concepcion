@@ -3,12 +3,12 @@
 #include <string>
 using namespace std;
 
-const string kHelpText = R"(fichero_entrada: Fichero a codificar
+const string kHelpText = R"(fichero_input: Fichero a codificar
 fichero_salida:  codificado
 método:          Elige metodo
                    1: xor
                    2: César
-password:        contraseña en el caso de método 1, Valor de K en el método 2
+contraseña:        contraseña en el caso de método 1, Valor de K en el método 2
 operación:       Operación  en el fichero
                    +: encriptar el fichero
                    -: desencriptar el fichero)";

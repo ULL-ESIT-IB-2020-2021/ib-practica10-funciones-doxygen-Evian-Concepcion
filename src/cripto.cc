@@ -27,8 +27,8 @@ int main(int argc, char* argv[]){
   string nombre_fichero_salida{argv[2]};
   string metodo{argv[3][0]};
   string contrasena{argv[4][0]};
-  /** La operación ha realizar puede ser (-), 
-   * desencriptar o (+), para encriptar */
+  /** La operación ha realizar puede ser -, 
+   * desencriptar o +, para encriptar */
   string operacion{argv[5]}; 
   string contenido_encriptado;
   ifstream input(nombre_fichero_entrada, ifstream::in);
