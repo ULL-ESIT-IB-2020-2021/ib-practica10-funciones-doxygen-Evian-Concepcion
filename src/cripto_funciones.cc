@@ -3,6 +3,7 @@
 #include <string>
 #include <stdlib.h>
 #include <iomanip>
+using namespace std;
 #include "cripto_funciones.h"
 
 /** Muestra como funciona el programa.
@@ -13,20 +14,20 @@
 void Usage(int argc, char* argv[]) {
   
   if (argc == 1 && argc != 6) {
-    std::cout << argv[0] << ": faltan parámetros" << std::endl;
-    std::cout << "Pruebe " << argv[0] << " --help para más información" << std::endl;
+    cout << argv[0] << ": error en los parametros" << endl;
+    cout << "Prueba " << argv[0] << " --help para más información" << std::endl;
     exit(EXIT_SUCCESS);
   }
   if (argc == 2){
-    std::string parameter{argv[1]};
+    string parameter{argv[1]};
     if (parameter == "--help") {
-      std::cout << kHelpText << std::endl;
+      cout << kHelpText << endl;
       exit(EXIT_SUCCESS);
     }
   }
   if (argc != 6){
-    std::cout << argv[0] << ": faltan parámetros" << std::endl;
-    std::cout << "Pruebe " << argv[0] << " --help para más información" << std::endl;
+    cout << argv[0] << ": falta algun parametro" << endl;
+    cout << "Prueba " << argv[0] << " --help para más información" << std::endl;
     exit(EXIT_SUCCESS);
   }
 }
@@ -36,21 +37,21 @@ void Usage(int argc, char* argv[]) {
  * */
 void ComprobarParametros(char* argv[]){
   if (argv[3][0] != '1' && argv[3][0] != '2'){
-    std::cout << "Error en el método de encriptado" << std::endl;
+    cout << "Error en el método de encriptado" << endl;
     exit(EXIT_FAILURE);
   }
   if (argv[3][0] == '2'){
-    std::string k{argv[4][0]};
+    string k{argv[4][0]};
     if(IsInteger(k)){
 
     }
     else{
-      std::cout << "Error en el método de encriptado" << std::endl;
+      cout << "Error en el método de encriptado" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if (argv[5][0] != '+' && argv[5][0] != '-'){
-    std::cout << "Error en la operación" << std::endl;
+    cout << "Error al operación" << endl;
     exit(EXIT_FAILURE);
   }
   
@@ -59,23 +60,22 @@ void ComprobarParametros(char* argv[]){
  * IsInteger dice si
  * k es un numero entero.
  * */ 
-bool IsInteger(std::string str) {
+bool IsInteger(string str) {
   for(auto c: str){
     if(c < 48 || c > 57)
       return false;
   }
-
   return true;
 } 
 /**
  * EncriptadoXor encripta usando el metodo xor. 
  *  */
-std::string EncriptadoXor(std::string contenido, std::string clave){
-  std::string contenido_encriptado{""};
-  std::string clave_encriptada{""};
+string EncriptadoXor(string contenido, string clave){
+  string contenido_encriptado{""};
+  string clave_encriptada{""};
   for (auto i : clave){
     clave_encriptada += (clave[i]^128);
-    std::cout << clave_encriptada;
+    cout << clave_encriptada;
   }
   for (int i : contenido){
     contenido_encriptado += (contenido[i]^clave_encriptada[i%clave_encriptada.length()]);
@@ -86,8 +86,8 @@ std::string EncriptadoXor(std::string contenido, std::string clave){
  * EncriptadoCesar es una funcion que utiliza el metodo de encriptacion
  * Cesar
  *  */
-std::string EncriptadoCesar(std::string contenido, const int k){
-  std::string contenido_encriptado;
+string EncriptadoCesar(string contenido, const int k){
+  string contenido_encriptado;
   for (int i = 0; i < contenido.length(); ++i){
     char caracter_evaluar = contenido[i];
     int caracter = caracter_evaluar;
@@ -101,8 +101,8 @@ std::string EncriptadoCesar(std::string contenido, const int k){
  * Al contrario de EncriptadoCesar, DesencriptadoCesar desencrita 
  * un archivo
  *  */
-std::string DesencriptadoCesar(std::string contenido, const int k){
-  std::string contenido_desencriptado;
+string DesencriptadoCesar(string contenido, const int k){
+  string contenido_desencriptado;
   for (int i = 0; i < contenido.length(); ++i){
     char caracter_evaluar = contenido[i];
     int caracter = caracter_evaluar;
