@@ -57,6 +57,19 @@ int main(int argc, char* argv[]){
     }
   
   }
+  //Cuantas veces se repite la vocal a
+  string a;
+  char *cad = new char[vocal.length() +1];
+  int contador = 0;
+  char caracter = 'a';
   
+  strcpy(cad, a.c_srt());
+  for(int i=0; i<a.lenght(); i++){
+     if(cadena[i] == caracter){
+       contador++;
+     }
+  }
+  cout << "El numero de veces que se repite a es: " << contador;
+
   return 0;
 }
